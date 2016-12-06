@@ -52,7 +52,8 @@ public class LoginActivity extends Activity {
 
     }
     void Login(){
-
+        Intent intent=new Intent(this,HelloWorldActivity.class);
+        startActivity(intent);
     }
     void ForgetPwd(){
         Intent intent=new Intent(this,ForgetPwdActivity.class);
