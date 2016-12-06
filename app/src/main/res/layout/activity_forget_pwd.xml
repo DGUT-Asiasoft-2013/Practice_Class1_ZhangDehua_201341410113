@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/forget_pwd_frag_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        class="com.example.z.helloworld.fragments.VersionFragment.ForgetPasswordFragment"
+        tools:layout="@layout/fragment_forget_password_step1"
+        />
+</LinearLayout>

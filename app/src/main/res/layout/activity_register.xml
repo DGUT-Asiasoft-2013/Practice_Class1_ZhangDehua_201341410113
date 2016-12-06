@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_weight="0.27">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <fragment
+                android:id="@+id/input_account"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                class="com.example.z.helloworld.fragments.VersionFragment.SimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext"
+                />
+            <fragment
+                android:id="@+id/input_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="com.example.z.helloworld.fragments.VersionFragment.SimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext"
+                />
+            <fragment
+                android:id="@+id/input_pwdagain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="com.example.z.helloworld.fragments.VersionFragment.SimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="注册"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
