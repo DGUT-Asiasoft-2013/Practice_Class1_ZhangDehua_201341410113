@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp">
+
+    </FrameLayout>
+    <fragment
+
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        class="com.example.z.helloworld.fragments.VersionFragment.MainToolBarFragment"
+        tools:layout="@layout/fragment_tab"
+        android:id="@+id/first_page_frag_tab" />
+
+
+</FrameLayout>

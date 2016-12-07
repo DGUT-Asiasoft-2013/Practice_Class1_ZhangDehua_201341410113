@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@drawable/tab_bar_background"
         android:gravity="center">
         <ImageView
 
@@ -26,6 +27,7 @@
 
 
     <LinearLayout
+        android:background="@drawable/tab_bar_background"
         android:id="@+id/frag_tab_notes"
         android:layout_weight="0.2"
         android:layout_width="match_parent"
@@ -55,6 +57,7 @@
         android:id="@+id/frag_tab_btn" />
 
     <LinearLayout
+        android:background="@drawable/tab_bar_background"
         android:id="@+id/frag_tab_search"
         android:layout_weight="0.2"
         android:layout_width="match_parent"
@@ -78,23 +81,25 @@
 
 
     <LinearLayout
+        android:background="@drawable/tab_bar_background"
         android:id="@+id/frag_tab_me"
         android:layout_weight="0.2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        >
 
         <ImageView
-
+            android:layout_weight="0.7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:src="@mipmap/ic_launcher"/>
 
         <TextView
-
+            android:layout_weight="0.3"
+            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="Me"/>
     </LinearLayout>
 </LinearLayout>

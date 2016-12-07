@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.z.helloworld.R;
 
@@ -32,7 +33,6 @@ public class MainToolBarFragment extends Fragment {
 
         for(final View tab : tabs){
             tab.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
                     onTabClicked(tab);
@@ -41,9 +41,40 @@ public class MainToolBarFragment extends Fragment {
         }
         return view;
     }
-    void onTabClicked(View tab){
-        for(View otherTab : tabs){
-            otherTab.setSelected(otherTab == tab);
+    public static interface OnTabSelectedListener {
+        void onTabSelected(int index);
+    }
+
+    OnTabSelectedListener onTabSelectedListener;
+
+    public void setOnTabSelectedListener(OnTabSelectedListener onTabSelectedListener) {
+        this.onTabSelectedListener = onTabSelectedListener;
+    }
+
+    public void setSelectedItem(int index){
+        if(index>=0 && index<tabs.length){
+            onTabClicked(tabs[index]);
         }
+    }
+    void onTabClicked(View tab){
+        int selectedIndex=-1;
+        for(int i=0;i<tabs.length;i++){
+            //otherTab.setSelected(otherTab == tab);
+            if(tabs[i]==tab){
+                tabs[i].setSelected(true);
+                selectedIndex=i;
+                //Toast.makeText(getActivity(),"第"+i+"被点击了",Toast.LENGTH_SHORT).show();
+            }else {
+                tabs[i].setSelected(false);
+            }
+        }
+        if(onTabSelectedListener!=null && selectedIndex>=0){
+            onTabSelectedListener.onTabSelected(selectedIndex);
+        }
+//
+//        for(View otherTab:tabs){
+//            otherTab.setSelected(otherTab == tab);
+//            Toast.makeText(getActivity(),"第被点击了",Toast.LENGTH_SHORT).show();
+//        }
     }
 }

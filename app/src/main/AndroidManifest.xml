@@ -21,6 +21,8 @@
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".ForgetPwdActivity"></activity>
         <activity android:name=".HelloWorldActivity"></activity>
+        <activity android:name=".SendNewsActivity"></activity>
+        <activity android:name=".FeedContentActivity"></activity>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
