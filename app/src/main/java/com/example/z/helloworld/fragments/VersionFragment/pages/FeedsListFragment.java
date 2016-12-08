@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,11 +80,11 @@ public class FeedsListFragment extends Fragment {
             View view = null;
             if (convertView == null) {
                 LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-                view = inflater.inflate(android.R.layout.simple_list_item_1, null);
+                view = inflater.inflate(R.layout.list_view_item, null);
             } else {
                 view = convertView;
             }
-            TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+            TextView text1 = (TextView) view.findViewById(R.id.list_txt);
             text1.setText(data[position]);
             return view;
         }
