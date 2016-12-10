@@ -1,6 +1,5 @@
 package com.example.z.helloworld.fragments.VersionFragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -51,4 +50,7 @@ public class SimpleTextInputCellFragment extends BaseInputcellMethod {
             Selection.setSelection(etable, etable.length());
         }
         }
+    public String  getEditText(){
+        return edit.getText().toString();
+    }
 }

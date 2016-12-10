@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+            <!--用户名-->
             <fragment
                 android:id="@+id/input_account"
                 android:layout_width="match_parent"
@@ -23,6 +24,7 @@
                 class="com.example.z.helloworld.fragments.VersionFragment.SimpleTextInputCellFragment"
                 tools:layout="@layout/fragment_inputcell_simpletext"
                 />
+            <!--密码-->
             <fragment
                 android:id="@+id/input_pwd"
                 android:layout_width="match_parent"
@@ -30,6 +32,7 @@
                 class="com.example.z.helloworld.fragments.VersionFragment.SimpleTextInputCellFragment"
                 tools:layout="@layout/fragment_inputcell_simpletext"
                 />
+            <!--重复密码-->
             <fragment
                 android:id="@+id/input_pwdagain"
                 android:layout_width="match_parent"
@@ -37,7 +40,22 @@
                 class="com.example.z.helloworld.fragments.VersionFragment.SimpleTextInputCellFragment"
                 tools:layout="@layout/fragment_inputcell_simpletext"
                 />
+            <!--邮箱-->
+            <fragment
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="com.example.z.helloworld.fragments.VersionFragment.SimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext"
+                />
+            <!--头像-->
+            <ImageView
+                android:id="@+id/input_img_head"
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+
             <Button
+                android:id="@+id/register_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="注册"/>
