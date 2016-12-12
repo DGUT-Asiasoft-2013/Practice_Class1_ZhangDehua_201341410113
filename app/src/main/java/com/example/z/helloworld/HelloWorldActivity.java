@@ -3,15 +3,9 @@ package com.example.z.helloworld;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import com.example.z.helloworld.fragments.VersionFragment.MainToolBarFragment;
 import com.example.z.helloworld.fragments.VersionFragment.pages.FeedsListFragment;
@@ -68,6 +62,7 @@ public class HelloWorldActivity extends Activity {
     void SendNews(){
         Intent intent=new Intent(getApplicationContext(),SendNewsActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slider_in_left,R.anim.slider_in_left);
 
     }
     void changeContentFragment(int index) {

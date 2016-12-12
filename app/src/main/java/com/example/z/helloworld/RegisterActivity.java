@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.z.helloworld.Useful.Dialog1;
 import com.example.z.helloworld.fragments.VersionFragment.SimpleTextInputCellFragment;
@@ -108,10 +109,13 @@ public class RegisterActivity extends Activity {
             @Override
             public void onFailure(Call call, IOException e) {
                 //Dialog1.alertDialog("","失败",RegisterActivity.this);
+                Toast.makeText(RegisterActivity.this,"注册失败",Toast.LENGTH_SHORT);
+
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 //Dialog1.alertDialog("","成功",RegisterActivity.this);
+                Toast.makeText(RegisterActivity.this,"注册成功!",Toast.LENGTH_SHORT);
             }
         });
 
