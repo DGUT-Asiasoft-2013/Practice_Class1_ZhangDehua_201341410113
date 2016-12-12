@@ -2,10 +2,8 @@ package com.example.z.helloworld;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Toast;
 
@@ -73,8 +71,7 @@ public class LoginActivity extends Activity {
                 .addFormDataPart("account",loginName.getEditText())
                 .addFormDataPart("passwordHash",MD5.getMD5(loginPwd.getEditText()))
                 .build();
-        Request request=new Request.Builder()
-                .url(Server.serverAdress("login"))
+        Request request=Server.requestBuilderWithApi("login")
                 .method("post",null)
                 .post(requestBody)
                 .build();
@@ -98,23 +95,23 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String responseString=response.body().string();
-                ObjectMapper mapper=new ObjectMapper();
-                final User user=mapper.readValue(responseString,User.class);
+                String responseString = response.body().string();
+                ObjectMapper mapper = new ObjectMapper();
+
+                final User user = mapper.readValue(responseString, User.class);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        dlg.dismiss();
-                        new AlertDialog.Builder(LoginActivity.this)
-                                .setMessage("Hello,"+user.getName())
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent=new Intent(LoginActivity.this,HelloWorldActivity.class);
-                                        startActivity(intent);
-                                    }
-                                })
-                                 .show();
+                        dlg.setMessage("Hello"+user.getName());
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        dlg.setCancelable(true);
+                        //finish();
+                        Intent intent = new Intent(LoginActivity.this, HelloWorldActivity.class);
+                        startActivity(intent);
                     }
                 });
             }
@@ -136,5 +133,8 @@ public class LoginActivity extends Activity {
         loginPwd.setLabelText("密  码：");
         loginPwd.setEditHint("请输入密码");
         loginPwd.setEditIsPwd(true);
+
+        loginName.setEdiText("yy");
+        loginPwd.setEdiText("yy");
     }
 }

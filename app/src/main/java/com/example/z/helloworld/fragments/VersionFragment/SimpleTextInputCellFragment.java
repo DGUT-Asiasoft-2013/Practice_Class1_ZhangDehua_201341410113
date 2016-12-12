@@ -53,4 +53,7 @@ public class SimpleTextInputCellFragment extends BaseInputcellMethod {
     public String  getEditText(){
         return edit.getText().toString();
     }
+    public   void setEdiText(String s){
+       edit.setText(s);
+    }
 }

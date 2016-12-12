@@ -10,9 +10,10 @@ import android.graphics.Shader;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Toast;
 
-import com.example.z.helloworld.Useful.Dialog1;
 import com.example.z.helloworld.api.Server;
+import com.example.z.helloworld.api.User;
 
 import java.io.IOException;
 
@@ -28,8 +29,16 @@ import okhttp3.Response;
 
 public class AvatarView extends View {
 
+    public AvatarView(Context context) {
+        super(context);
+    }
+
     public AvatarView(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    public AvatarView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
     Paint paint;
     float radius;
@@ -37,19 +46,19 @@ public class AvatarView extends View {
     public  void setBitmap(Bitmap bmp){
         try {
             paint=new Paint();
-            paint.setShader(new BitmapShader(bmp, Shader.TileMode.REPEAT,Shader.TileMode.REPEAT));
+            paint.setShader(new BitmapShader(bmp, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT));
             radius=Math.min(bmp.getWidth(),bmp.getHeight())/2;
+//            radius=paint.getStrokeWidth();
             invalidate();//?
         }catch (Exception e){
-            Dialog1.alertDialog("",e.toString(),getContext());
+            //Dialog1.alertDialog("",e.toString(),getContext());
         }
 
     }
-    public void load(String address){
+    public void load(User user){
 
         OkHttpClient client = Server.getSharedClient();
-        Request request =new Request.Builder()
-                .url(Server.serverAdress(address))
+        Request request =Server.requestBuilderWithApi(user.getAvatar())
                 .method("get", null)
                 .build();
 
@@ -66,7 +75,7 @@ public class AvatarView extends View {
                         }
                     });
                 }catch(Exception ex){
-
+                    Toast.makeText(getContext(),ex.getLocalizedMessage().toString(),Toast.LENGTH_SHORT);
                 }
             }
             @Override
@@ -81,7 +90,9 @@ public class AvatarView extends View {
     public void draw(Canvas canvas) {
         super.draw(canvas);
         if(paint!=null){
-            canvas.drawCircle(getWidth()/2, getHeight()/2, radius, paint);
+            canvas.drawCircle(getWidth()/2, getHeight()/2, 120, paint);
+        }else {
+            Toast.makeText(getContext(),"画布为空",Toast.LENGTH_SHORT);
         }
     }
 }

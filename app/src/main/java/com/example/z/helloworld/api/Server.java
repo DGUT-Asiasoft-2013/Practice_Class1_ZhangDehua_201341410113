@@ -1,51 +1,32 @@
 package com.example.z.helloworld.api;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
 
-import okhttp3.Cookie;
-import okhttp3.CookieJar;
-import okhttp3.HttpUrl;
+import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
-
-/**
- * Created by Z on 2016/12/12.
- */
+import okhttp3.Request;
 
 public class Server {
     static OkHttpClient client;
 
     static {
-        CookieJar cookieJar = new CookieJar() {
-            Map<HttpUrl, List<Cookie>> cookiemap = new HashMap<HttpUrl, List<Cookie>>();
-
-            @Override
-            public void saveFromResponse(HttpUrl key, List<Cookie> value) {
-                cookiemap.put(key, value);
-            }
-
-            @Override
-            public List<Cookie> loadForRequest(HttpUrl key) {
-                List<Cookie> cookies = cookiemap.get(key);
-                if(cookies==null){
-                    return new ArrayList<Cookie>();
-                }else{
-                    return cookies;
-                }
-            }
-        };
+        CookieManager cookieManager = new CookieManager();
+        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
 
         client = new OkHttpClient.Builder()
-                .cookieJar(cookieJar)
+                .cookieJar(new JavaNetCookieJar(cookieManager))
                 .build();
     }
+
     public static OkHttpClient getSharedClient(){
         return client;
     }
 
-    public static String serverAdress(String api){
-        return "http://169.254.80.80:8080/membercenter/api/"+api;
+    public static String serverAddress = "http://169.254.80.80:8080/membercenter/";
+
+    public static Request.Builder requestBuilderWithApi(String api){
+        return new Request.Builder()
+                .url(serverAddress+"api/"+api);
     }
 }
