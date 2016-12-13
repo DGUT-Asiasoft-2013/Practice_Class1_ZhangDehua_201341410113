@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -18,15 +19,15 @@ import com.example.z.helloworld.R;
 public class ForgetPasswordFragment extends Fragment {
 
     SimpleTextInputCellFragment step1;
+    Button btn_submit;
     TextView label;
     EditText edi;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view=inflater.inflate(R.layout.fragment_forget_password_step1,container);
-            step1=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.step1_frag_email);
-            step1.setLabelText("邮箱：");
-            step1.setEditHint("请输入邮箱地址");
+            View view=inflater.inflate(R.layout.fragment_forget_password_step1,null);
+        step1=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.step1_frag_email);
+            btn_submit=(Button)view.findViewById(R.id.step1_btn_submit);
             //label=(TextView)
             return view;
     }
@@ -34,6 +35,11 @@ public class ForgetPasswordFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        try{
+
+        }catch (Exception e){
+
+        }
 
     }
 }

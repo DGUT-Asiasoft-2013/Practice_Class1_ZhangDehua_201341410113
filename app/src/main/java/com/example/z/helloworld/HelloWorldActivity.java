@@ -62,7 +62,7 @@ public class HelloWorldActivity extends Activity {
     void SendNews(){
         Intent intent=new Intent(getApplicationContext(),SendNewsActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slider_in_left,R.anim.slider_in_left);
+        overridePendingTransition(R.anim.slider_in_buttom,R.anim.none);
 
     }
     void changeContentFragment(int index) {

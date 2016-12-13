@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<EditText
-    android:id="@+id/activity_send_edi_news"
-    android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:hint="输入你想要发表的东西"/>
     <Button
-        android:id="@+id/activity_send_btn_cancel"
-        android:layout_width="match_parent"
+        android:id="@+id/news_btn_cancel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:layout_gravity="left"
+        android:text="取消"/>
     <Button
-        android:id="@+id/activity_send_btn_send"
-        android:layout_width="match_parent"
+        android:id="@+id/news_btn_send"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="right"
         android:text="发送"/>
-</LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+
+            android:id="@+id/news_edi_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="在这里输入文章标题"/>
+        <EditText
+            android:id="@+id/news_edi_body"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:hint="输入你想要发表的东西"/>
+    </LinearLayout>
+
+
+</FrameLayout>
