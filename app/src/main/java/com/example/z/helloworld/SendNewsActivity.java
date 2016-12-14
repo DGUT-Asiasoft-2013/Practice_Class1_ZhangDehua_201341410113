@@ -59,7 +59,10 @@ public class SendNewsActivity extends Activity {
     void Send(){
         String title=edi_title.getText().toString();
         String body=edi_body.getText().toString();
-        if (title!=null && body!=null){
+        if (title.contentEquals("") && body.contentEquals("")){
+            Dialog1.alertDialog("","不能为空",this);
+        }else {
+
             final ProgressDialog dlg= new ProgressDialog(this);
             //dlg.setCancelable(false);
             dlg.setCanceledOnTouchOutside(false);
@@ -82,7 +85,7 @@ public class SendNewsActivity extends Activity {
                         @Override
                         public void run() {
                             dlg.dismiss();
-                            Toast.makeText(SendNewsActivity.this,"失败",Toast.LENGTH_SHORT);
+                            Toast.makeText(SendNewsActivity.this,"失败",Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -94,15 +97,13 @@ public class SendNewsActivity extends Activity {
                         @Override
                         public void run() {
                             dlg.dismiss();
-                            Toast.makeText(SendNewsActivity.this,"成功",Toast.LENGTH_SHORT);
+                            Toast.makeText(SendNewsActivity.this,"成功",Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     });
 
                 }
             });
-        }else {
-            Dialog1.alertDialog("","不能为空",this);
         }
 
 

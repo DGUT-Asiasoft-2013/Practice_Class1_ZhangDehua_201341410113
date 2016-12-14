@@ -2,9 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.example.z.helloworld.fragments.VersionFragment.pages.AvatarView
+        android:id="@+id/feed_content_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="118dp" />
+
     <TextView
+        android:textSize="@dimen/list_title_size"
+        android:id="@+id/feed_content_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="标题"/>
+    <TextView
+        android:id="@+id/feed_content_authorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="作者"/>
+    <TextView
+        android:id="@+id/feed_content_create_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="2016-12-14 9:35:58"/>
+    <TextView
+        android:textSize="@dimen/list_title_size"
         android:id="@+id/feed_content_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="内容测试个，fdskdlsgjjgklj两节课了圣诞节付款了好骚等加了打勾了"/>
+
 </LinearLayout>

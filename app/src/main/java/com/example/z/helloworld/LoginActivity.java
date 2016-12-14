@@ -95,14 +95,14 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String responseString = response.body().string();
+                final String responseString = response.body().string();
                 ObjectMapper mapper = new ObjectMapper();
 
                 final User user = mapper.readValue(responseString, User.class);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        dlg.setMessage("Hello"+user.getName());
+                        dlg.setMessage("Hello\n"+responseString);
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {

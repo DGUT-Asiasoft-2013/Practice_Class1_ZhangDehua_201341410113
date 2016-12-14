@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.os.Handler;
@@ -42,28 +44,39 @@ public class AvatarView extends View {
     }
     Paint paint;
     float radius;
+    float srcWidth, srcHeight;
     Handler mainThreadHandler=new Handler();
     public  void setBitmap(Bitmap bmp){
-        try {
-            paint=new Paint();
+        if(bmp==null) {
+            paint = new Paint();
+            paint.setColor(Color.GRAY);
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(1);
+            paint.setPathEffect(new DashPathEffect(new float[]{5, 10, 15, 20}, 0));
+            paint.setAntiAlias(true);
+        }else{
+            paint = new Paint();
             paint.setShader(new BitmapShader(bmp, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT));
-            radius=Math.min(bmp.getWidth(),bmp.getHeight())/2;
-//            radius=paint.getStrokeWidth();
-            invalidate();//?
-        }catch (Exception e){
-            //Dialog1.alertDialog("",e.toString(),getContext());
+            paint.setAntiAlias(true);
+
+            srcWidth = bmp.getWidth();
+            srcHeight = bmp.getHeight();
         }
+
+        invalidate();
 
     }
     public void load(User user){
-
+        load(Server.serverAddress + user.getAvatar());
+    }
+    public void load(String url){
         OkHttpClient client = Server.getSharedClient();
-        Request request =Server.requestBuilderWithApi(user.getAvatar())
+        Request request =new Request.Builder()
+                .url(url)
                 .method("get", null)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
-
             @Override
             public void onResponse(Call arg0, Response arg1) throws IOException {
                 try{
@@ -90,9 +103,18 @@ public class AvatarView extends View {
     public void draw(Canvas canvas) {
         super.draw(canvas);
         if(paint!=null){
-            canvas.drawCircle(getWidth()/2, getHeight()/2, 120, paint);
-        }else {
-            Toast.makeText(getContext(),"画布为空",Toast.LENGTH_SHORT);
+            canvas.save();
+
+            float dstWidth = getWidth();
+            float dstHeight = getHeight();
+
+            float scaleX = srcWidth / dstWidth;
+            float scaleY = srcHeight / dstHeight;
+
+            canvas.scale(1/scaleX, 1/scaleY);
+
+            canvas.drawCircle(srcWidth/2, srcHeight/2, Math.min(srcWidth, srcHeight)/2, paint);
+            canvas.restore();
         }
     }
 }
