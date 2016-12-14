@@ -11,11 +11,17 @@ public class Article implements Serializable{
     Integer id;
     Date createDate;
     Date editDate;
-
+    User author;
     String title;
     String text;
-    String authorName;
-    String authorAvatar;
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
     public Integer getId() {
         return id;
     }
@@ -46,18 +52,7 @@ public class Article implements Serializable{
     public void setText(String text) {
         this.text = text;
     }
-    public String getAuthorName() {
-        return authorName;
-    }
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
-    public String getAuthorAvatar() {
-        return authorAvatar;
-    }
-    public void setAuthorAvatar(String authorAvatar) {
-        this.authorAvatar = authorAvatar;
-    }
+
 
 
 }

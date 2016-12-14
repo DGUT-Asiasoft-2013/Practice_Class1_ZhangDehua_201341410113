@@ -18,12 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".ForgetPwdActivity"></activity>
-        <activity android:name=".HelloWorldActivity"></activity>
-        <activity android:name=".SendNewsActivity"></activity>
-        <activity android:name=".FeedContentActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ForgetPwdActivity" />
+        <activity android:name=".HelloWorldActivity" />
+        <activity android:name=".SendNewsActivity" />
+        <activity
+            android:name=".FeedContentActivity"
+             />
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data

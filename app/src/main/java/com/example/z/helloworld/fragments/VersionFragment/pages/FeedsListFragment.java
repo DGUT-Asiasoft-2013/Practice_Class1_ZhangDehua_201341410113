@@ -41,7 +41,6 @@ public class FeedsListFragment extends Fragment {
     ListView listView;
     //String[] data;
     Random random = new Random();
-    Article art = new Article();
 
     List<Article> data;
     int page = 0;
@@ -75,7 +74,7 @@ public class FeedsListFragment extends Fragment {
     }
 
     void reload() {
-        Request request = Server.requestBuilderWithApi("feeds")
+        Request request = Server.requestBuilderWithApi("feeds/0")
                 .get()
                 .build();
 
@@ -94,14 +93,15 @@ public class FeedsListFragment extends Fragment {
             @Override
             public void onResponse(Call arg0, Response arg1) throws IOException {
                 try {
-                    Page<Article> data = new ObjectMapper()
+                    final Page<Article> data = new ObjectMapper()
                             .readValue(arg1.body().string(),
                                     new TypeReference<Page<Article>>() {
                                     });
-                    FeedsListFragment.this.page = data.getNumber();
-                    FeedsListFragment.this.data = data.getContent();
+
                     getActivity().runOnUiThread(new Runnable() {
                         public void run() {
+                            FeedsListFragment.this.page = data.getNumber();
+                            FeedsListFragment.this.data = data.getContent();
                             listAdapter.notifyDataSetInvalidated();
                         }
                     });
@@ -122,21 +122,7 @@ public class FeedsListFragment extends Fragment {
     void OnItemClickListener(int position) {
         Intent intent = new Intent(getActivity(), FeedContentActivity.class);
         Article article=data.get(position);
-
-        int articleID=article.getId();
-        String title=article.getTitle();
-        String text=article.getText();
-        String createTime=DateFormat.format("yyyy-MM-dd hh:mm", article.getCreateDate()).toString();
-        String authorName=article.getAuthorName();
-        String avatarUrl=article.getAuthorAvatar();
-
-        intent.putExtra("articleID",articleID);
-        intent.putExtra("title",title);
-        intent.putExtra("text",text);
-        intent.putExtra("createTime",createTime);
-        intent.putExtra("authorName",authorName);
-        intent.putExtra("avatarUrl",avatarUrl);
-
+        intent.putExtra("article",article);
         startActivity(intent);
     }
 
@@ -172,13 +158,19 @@ public class FeedsListFragment extends Fragment {
             AvatarView avatar = (AvatarView) view.findViewById(R.id.list_avatar);
 
             //设置相应控件的值
-            Article article = data.get(position);
-            text.setText(article.getText());
-            title.setText(article.getTitle());
-            author.setText(article.getAuthorName());
-            avatar.load(Server.serverAddress + article.getAuthorAvatar());
-            String datastr= DateFormat.format("yyyy-MM-dd hh:mm", article.getCreateDate()).toString();
-            createTime.setText(datastr);
+            try {
+                Article article = data.get(position);
+                text.setText(article.getText());
+                title.setText(article.getTitle());
+                author.setText(article.getAuthor().getName());
+                avatar.load(Server.serverAddress + article.getAuthor().getAvatar());
+                String datastr= DateFormat.format("yyyy-MM-dd hh:mm", article.getCreateDate()).toString();
+                createTime.setText(datastr);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
             return view;
         }
     };

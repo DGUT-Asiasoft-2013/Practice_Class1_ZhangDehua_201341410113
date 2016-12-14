@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_gravity="top"
+        android:textSize="@dimen/list_title_size"
+        android:id="@+id/feed_content_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="内容测试个，fdskdlsgjjgklj两节课了圣诞节付款了好骚等加了打勾了"/>
+
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+        <EditText
+            android:layout_weight="0.8"
+            android:id="@+id/feed_edi_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="要吐槽来这里~~" />
+
+        <Button
+            android:layout_weight="0.2"
+            android:layout_gravity="right|bottom"
+            android:id="@+id/feed_btn_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评论"/>
+    </LinearLayout>
+
+</FrameLayout>
