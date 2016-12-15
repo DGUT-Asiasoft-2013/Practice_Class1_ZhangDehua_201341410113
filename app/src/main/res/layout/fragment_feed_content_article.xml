@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/frag_feed_article_content_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.02"
+        android:gravity="center"
+        android:text="标题"
+        android:textSize="@dimen/list_title_size" />
+
+    <TextView
+        android:id="@+id/frag_feed_article_authorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="作者" />
+
+    <TextView
+        android:id="@+id/frag_feed_article_create_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="2016-12-14 9:35:58" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.45">
+
+        <TextView
+            android:id="@+id/frag_feed_article_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:gravity="center"
+            android:text="内容测试个，fdskdlsgjjgklj两节课了圣诞节付款了好骚等加了打勾了"
+            android:textSize="@dimen/list_title_size" />
+
+    </ScrollView>
+</LinearLayout>

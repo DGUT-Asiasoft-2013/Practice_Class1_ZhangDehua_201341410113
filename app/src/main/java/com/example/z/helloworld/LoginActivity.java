@@ -134,7 +134,7 @@ public class LoginActivity extends Activity {
         loginPwd.setEditHint("请输入密码");
         loginPwd.setEditIsPwd(true);
 
-        loginName.setEdiText("yy");
-        loginPwd.setEdiText("yy");
+        loginName.setEdiText("p");
+        loginPwd.setEdiText("p");
     }
 }

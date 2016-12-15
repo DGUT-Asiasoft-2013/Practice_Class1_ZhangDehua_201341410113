@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">登录界面</string>
+    <string name="comment_detail">----------评论详情----------</string>
 </resources>

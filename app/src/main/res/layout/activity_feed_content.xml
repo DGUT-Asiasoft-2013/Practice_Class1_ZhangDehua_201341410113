@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <!--头像、三按钮-->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -22,74 +23,23 @@
             android:layout_height="wrap_content"
             android:text="点赞"/>
         <Button
-            android:id="@+id/feed_btn_goto_comment"
+            android:id="@+id/feed_btn_watch_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评论"/>
+            android:text="查看评论"/>
     </LinearLayout>
 
 
-    <TextView
-        android:textSize="@dimen/list_title_size"
-        android:id="@+id/feed_content_title"
+    <fragment
+        android:id="@+id/feed_content_switch_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="标题"/>
-    <TextView
-        android:id="@+id/feed_content_authorName"
+        class="com.example.z.helloworld.fragments.VersionFragment.widget.SwitchBarFragment"
+        tools:layout="@layout/fragment_switch_bar"/>
+    <FrameLayout
+        android:id="@+id/feed_content_contain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="作者"/>
-    <TextView
-        android:id="@+id/feed_content_create_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="2016-12-14 9:35:58"/>
+        android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_weight="0.37"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-            <TextView
-                android:layout_gravity="top"
-                android:textSize="@dimen/list_title_size"
-                android:id="@+id/feed_content_text"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="内容测试个，fdskdlsgjjgklj两节课了圣诞节付款了好骚等加了打勾了"/>
-
-    </ScrollView>
-
-<!--评论-->
-    <LinearLayout
-        android:id="@+id/feed_content_lineLayout"
-        android:visibility="invisible"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:visibility="invisible"
-            android:selectAllOnFocus="true"/>
-        <EditText
-            android:layout_weight="0.8"
-            android:id="@+id/feed_edi_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="要吐槽来这里~~" />
-
-        <Button
-            android:layout_weight="0.2"
-            android:layout_gravity="right|bottom"
-            android:id="@+id/feed_btn_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="评论"/>
-    </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

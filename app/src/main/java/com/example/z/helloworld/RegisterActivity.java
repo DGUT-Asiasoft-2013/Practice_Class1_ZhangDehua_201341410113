@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.z.helloworld.Useful.Dialog1;
 import com.example.z.helloworld.fragments.VersionFragment.SimpleTextInputCellFragment;
 
 import java.io.IOException;
@@ -79,13 +78,25 @@ public class RegisterActivity extends Activity {
         pwd = simpleTextInputCellFragmentPwd.getEditText();
         pwdAgain = simpleTextInputCellFragmentPwdAgain.getEditText();
         email = simpleTextInputCellFragmentEmail.getEditText();
-        if (pwd != null && pwd.contentEquals(pwdAgain)) {
+        if (pwd.contentEquals("")==false && pwd.contentEquals(pwdAgain)) {
             pwd = MD5.getMD5(pwd);
-            String text = account + "|" + pwd + "|" + pwdAgain + "|" + email;
-            Dialog1.alertDialog("", text, this);
+            final String text = account + "|" + pwd + "|" + pwdAgain + "|" + email;
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
+                }
+            });
             SubmitRegister();
         } else {
-            Dialog1.alertDialog("", "密码为空或两次输入的密码不一致", this);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    //Dialog1.alertDialog("", "密码为空或两次输入的密码不一致", RegisterActivity.this);
+                    Toast.makeText(getApplicationContext(),"密码为空或两次输入的密码不一致",Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
     }
 
@@ -109,13 +120,24 @@ public class RegisterActivity extends Activity {
             @Override
             public void onFailure(Call call, IOException e) {
                 //Dialog1.alertDialog("","失败",RegisterActivity.this);
-                Toast.makeText(RegisterActivity.this,"注册失败",Toast.LENGTH_SHORT);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(RegisterActivity.this,"注册失败!",Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 //Dialog1.alertDialog("","成功",RegisterActivity.this);
-                Toast.makeText(RegisterActivity.this,"注册成功!",Toast.LENGTH_SHORT);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(RegisterActivity.this,"注册成功!",Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
 

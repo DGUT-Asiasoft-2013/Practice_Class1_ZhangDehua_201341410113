@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <ListView
+        android:id="@+id/list_view_comment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="42dp"
+        >
+    </ListView>
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/feed_frag_comment_text"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text=" "/>
+
+
+    <!--评论-->
+
+    <LinearLayout
+        android:id="@+id/feed_content_lineLayout"
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:selectAllOnFocus="true"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/feed_edi_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:hint="要吐槽来这里~~" />
+
+        <Button
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/feed_btn_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_weight="0.2"
+            android:text="评论" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffdfdfdf"
+        android:layout_marginBottom="41dp"
+        />
+
+
+
+</FrameLayout>
